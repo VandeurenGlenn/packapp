@@ -1,6 +1,6 @@
 const { spawn} = require('child_process');
 // const { exec } = require('pkg');
-const exe = require('win-exe');
+const exe = require('@vandeurenglenn/win-exe');
 const { join } = require('path');
 const ora = require('ora');
 
