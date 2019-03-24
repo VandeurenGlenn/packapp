@@ -54,7 +54,7 @@ const handleArray = arr => {
 module.exports = async options => {
   log('pack app');
   if (options.main) {
-    const args = [join(__dirname, 'node_modules/pkg/lib-es5/bin.js')];
+    const args = [join(process.cwd(), 'node_modules/pkg/lib-es5/bin.js')];
     args.push(options.main);
     if (options.targets) {
       args.push('--target')
