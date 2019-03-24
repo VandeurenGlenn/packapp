@@ -1,0 +1,39 @@
+{
+  "name": "packapp",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "packapp": "cli.js"
+  },
+  "scripts": {
+    "install": "npm i -g pkg",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vandeurenglenn/packapp.git"
+  },
+  "keywords": [
+    "bundle",
+    "package",
+    "app",
+    "executable",
+    "create"
+  ],
+  "author": "Glenn Vandeuren <vandeurenglenn@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vandeurenglenn/packapp/issues"
+  },
+  "homepage": "https://github.com/vandeurenglenn/packapp#readme",
+  "dependencies": {
+    "@vandeurenglenn/win-exe": "^1.0.0",
+    "cli-spinners": "^1.3.1",
+    "ora": "^3.1.0",
+    "pkg": "^4.3.7"
+  },
+  "devDependencies": {
+    "opn": "^5.4.0"
+  }
+}
