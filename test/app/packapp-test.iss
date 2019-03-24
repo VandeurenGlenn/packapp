@@ -45,7 +45,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "..\executables\main-win.exe"; DestDir: "{app}"; DestName: "{#MyAppExeName}.exe"; Flags: ignoreversion
 
-Source: "node_modules\opn\xdg-open"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 [Tasks]
 ;Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checkablealone

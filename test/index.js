@@ -12,7 +12,7 @@ m({
   main: 'test/app/main.js',
   targets: 'node10-win-x64,node10-linux-x64',
   assets: 'test/app/index.html',
-  outPath: 'test/executables',
+  output: 'test/executables',
   winExe: {
     scripts: 'test/app/packapp-test.iss'
   }
