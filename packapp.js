@@ -86,7 +86,7 @@ module.exports = async options => {
       winExe.push(val[1])
     })
     options.winExe.verbose = options.verbose;
-    const pIndex = proces.argv.indexOf('password');
+    const pIndex = process.argv.indexOf('password');
     if (!options.winExe.password) options.winExe.password = pIndex !== -1 ? process.argv[pIndex] : false;
     await exe(options.winExe);
   }
