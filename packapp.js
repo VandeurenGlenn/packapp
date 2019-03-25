@@ -87,7 +87,7 @@ module.exports = async options => {
     })
     options.winExe.verbose = options.verbose;
     const pIndex = process.argv.indexOf('password');
-    if (!options.winExe.password) options.winExe.password = pIndex !== -1 ? process.argv[pIndex] : false;
+    if (!options.winExe.password) options.winExe.password = pIndex !== -1 ? process.argv[pIndex + 1] : false;
     await exe(options.winExe);
   }
 }
