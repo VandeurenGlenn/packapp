@@ -1,10 +1,15 @@
 const { spawn} = require('child_process');
-// const { exec } = require('pkg');
 const exe = require('@vandeurenglenn/win-exe/win-exe.js');
 const { join } = require('path');
 const ora = require('ora');
+const { writeFile, unlink } = require('fs');
+const { promisify } = require('util');
 
 let spinner;
+
+const write = promisify(writeFile);
+const remove = promisify(unlink);
+
 const log = (text, type=false) => {
   if (!spinner) spinner = ora(text).start();
   if (type) spinner[type](text);
@@ -54,20 +59,13 @@ const handleArray = arr => {
 module.exports = async options => {
   log('pack app');
   if (options.main) {
-    const args = [join(process.cwd(), 'node_modules/pkg/lib-es5/bin.js')];
-    args.push(options.main);
-    if (options.targets) {
-      args.push('--target')
-      args.push(handleArray(options.targets))
-    }
-    if (options.scripts) {
-      args.push('--scripts');
-      args.push(handleArray(options.scripts));
-    }
-    if (options.assets) {
-      args.push('--assets');
-      args.push(handleArray(options.assets));
-    }
+    const args = [join(process.cwd(), 'node_modules/pkg/lib-es5/bin.js'), options.main, '-c', '.packapp.pkg.json'];
+    const config = {...options};
+    config.entry = config.main;
+    delete config.winExe;
+    delete config.main;
+    delete config.verbose;
+    await write('.packapp.pkg.json', JSON.stringify(config));
     if (options.output && options.targets.length === 1) {
       args.push('--output');
       args.push(options.output);
@@ -77,7 +75,7 @@ module.exports = async options => {
     }
     await spawnChild('node', args)
     log('pack app', 'succeed');
-    // await exec(args, options.verbose)
+    await remove('.packapp.pkg.json');
   }
   if (options.winExe) {
     const winExe = [];
